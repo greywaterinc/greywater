@@ -86,19 +86,6 @@ function TankStatusCard() {
         ]
         })
 
-    useEffect(() => {
-        const newData = data.datasets[0]['data'];
-        newData.shift();
-        newData.push((Math.random() * 9) + 3)
-        setInterval(() => {
-            setData({...data, datasets: [
-                {
-                    data: newData
-                }
-            ]})
-        }, 3000);
-    }, [])
-
     return (
         <View style={styles.tankstatuscard}>
             <View style={{flexDirection: 'row', justifyContent: 'space-evenly', paddingVertical: 20}}>

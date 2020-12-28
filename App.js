@@ -10,6 +10,7 @@ import GreetingScreen from './src/screens/Greeting'
 import OnboardScreen from './src/screens/Onboard'
 import DashboardScreen from './src/screens/Dashboard';
 import LoginScreen from './src/screens/Login';
+import MetricDetailScreen from "./src/screens/MetricStatusDetail";
 import AppProvider from './src/contexts/app';
 
 library.add(fas)
@@ -27,6 +28,7 @@ function App() {
           <Stack.Screen name="Onboard" component={OnboardScreen} />
           <Stack.Screen name="Dashboard" component={DashboardScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="MetricDetail" component={MetricDetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>
