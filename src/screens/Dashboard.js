@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import React, {useState} from "react"
 import { View, ActionSheetIOS, StyleSheet, TouchableOpacity, Text, ScrollView, Dimensions } from "react-native"
-import { FlatList } from "react-native-gesture-handler"
+import Animated, { useSharedValue, useAnimatedStyle, withSpring, runOnJS } from 'react-native-reanimated';
 import tailwind from "tailwind-rn"
 import DashboardHeader from "../components/DashboardHeader"
+
 
 const styles = StyleSheet.create({
   container: {
@@ -29,6 +30,10 @@ const styles = StyleSheet.create({
     marginTop: 24,
     marginBottom: 12,
     height: 56
+  },
+  activeSwitchTab: {
+    backgroundColor: '#374151',
+    ...tailwind('rounded-full h-10 w-40 absolute')
   },
   smallerBoxStyle: {...tailwind('bg-white'),
     width: 160,
@@ -76,6 +81,14 @@ function HealthBar({ status=1, width=160, enabledMargin=true }) {
 }
 
 function Dashboard({ navigation }) {
+
+  const offset = useSharedValue(0);
+  const animatedStyles = useAnimatedStyle(() => runOnJS(() => {
+    return {
+      transform: [{ translateX: withSpring(offset.value) }],
+    };
+  }));
+
   const tankOptions = ["Chemical Tank", "Ozone Contact Tank", "ICEAS Tank", "Collection Tank", "Storage Tank"]
   const [viewingTank, selectViewingTank] = useState ("Sedimentation Tank")
   const chooseTank = () => {
@@ -98,11 +111,18 @@ function Dashboard({ navigation }) {
       <DashboardHeader/>
         <View style={styles.card}> 
           <View style={styles.tabMenuContainer}>
-            <TouchableOpacity style={{...tailwind('px-6 py-2 rounded-full h-10 justify-center items-center flex-row flex-1'), backgroundColor: '#374151'}}>
+            <Animated.View style={[styles.activeSwitchTab, animatedStyles]}/>
+            <TouchableOpacity
+              style={{...tailwind('flex-1')}}
+              onPress={() =>  (offset.value = 0)}
+              >
               <FontAwesomeIcon style={tailwind('text-white')} icon={['fas', 'chart-pie']}/>
               <Text style={tailwind('ml-2 text-white font-bold')}>Status</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={tailwind('px-6 py-2 h-10 justify-center items-center flex-row flex-1')}>
+            <TouchableOpacity
+              style={tailwind('flex-1')}
+              onPress={() =>  (offset.value = 200)}
+              >
               <FontAwesomeIcon style={{color: '#374151'}} icon={['fas', 'sliders-h']}/>
               <Text style={{...tailwind('ml-2 font-bold'),color: '#374151'}}>Control</Text>
             </TouchableOpacity>

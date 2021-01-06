@@ -328,13 +328,38 @@ PODS:
     - React
   - RNPermissions (2.2.2):
     - React-Core
-  - RNReanimated (1.13.1):
+  - RNReanimated (2.0.0-rc.1):
+    - DoubleConversion
+    - FBLazyVector
+    - FBReactNativeSpec
+    - Folly
+    - glog
+    - RCTRequired
+    - RCTTypeSafety
     - React
+    - React-callinvoker
+    - React-Core
+    - React-Core/DevSupport
+    - React-Core/RCTWebSocket
+    - React-CoreModules
+    - React-cxxreact
+    - React-jsi
+    - React-jsiexecutor
+    - React-jsinspector
+    - React-RCTActionSheet
+    - React-RCTAnimation
+    - React-RCTBlob
+    - React-RCTImage
+    - React-RCTLinking
+    - React-RCTNetwork
+    - React-RCTSettings
+    - React-RCTText
+    - React-RCTVibration
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNScreens (2.13.0):
     - React-Core
   - RNSVG (12.1.0):
-    - React
-  - sp-react-native-mqtt (0.4.25):
     - React
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -400,7 +425,6 @@ DEPENDENCIES:
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
-  - sp-react-native-mqtt (from `../node_modules/sp-react-native-mqtt`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -494,8 +518,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNSVG:
     :path: "../node_modules/react-native-svg"
-  sp-react-native-mqtt:
-    :path: "../node_modules/sp-react-native-mqtt"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -546,13 +568,12 @@ SPEC CHECKSUMS:
   RNCMaskedView: f5c7d14d6847b7b44853f7acb6284c1da30a3459
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNPermissions: 067727df624665d4a6c8e2cffcc172ba608b96ed
-  RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
+  RNReanimated: b2d6785c8fc1f61e1c81179c64c9b6b1a00e6ab5
   RNScreens: 13f23e5498fb4aa749d19a5eda7f8792fbb9d01f
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
-  sp-react-native-mqtt: 15f945b7555fd700cbb5aee995908beb3acf4b32
   Yoga: 7740b94929bbacbddda59bf115b5317e9a161598
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
 PODFILE CHECKSUM: 68df2e1a0ba094e2ac9df2ef904a527a23b89749
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0
