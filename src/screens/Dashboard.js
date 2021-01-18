@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
-import React, {useState} from "react"
-import { View, ActionSheetIOS, StyleSheet, TouchableOpacity, Text, ScrollView, Dimensions } from "react-native"
+import React, {useState, useRef} from "react"
+import { View, ActionSheetIOS, StyleSheet, TouchableOpacity, Text, ScrollView, Dimensions, Switch } from "react-native"
 import Animated, { useSharedValue, useAnimatedStyle, withSpring, runOnJS } from 'react-native-reanimated';
 import tailwind from "tailwind-rn"
 import DashboardHeader from "../components/DashboardHeader"
+import ViewPager from '@react-native-community/viewpager';
 
 
 const styles = StyleSheet.create({
@@ -82,12 +83,13 @@ function HealthBar({ status=1, width=160, enabledMargin=true }) {
 
 function Dashboard({ navigation }) {
 
+  const [page, setpage] = useState(0);
   const offset = useSharedValue(0);
-  const animatedStyles = useAnimatedStyle(() => runOnJS(() => {
+  const animatedStyles = useAnimatedStyle(() => {
     return {
       transform: [{ translateX: withSpring(offset.value) }],
     };
-  }));
+  });
 
   const tankOptions = ["Chemical Tank", "Ozone Contact Tank", "ICEAS Tank", "Collection Tank", "Storage Tank"]
   const [viewingTank, selectViewingTank] = useState ("Sedimentation Tank")
@@ -103,6 +105,7 @@ function Dashboard({ navigation }) {
       console.log(tankOptions[buttonChosen-1])
     })
   }
+
   return (
     <View style={styles.container}>
       <TouchableOpacity>
@@ -111,17 +114,17 @@ function Dashboard({ navigation }) {
       <DashboardHeader/>
         <View style={styles.card}> 
           <View style={styles.tabMenuContainer}>
-            <Animated.View style={[styles.activeSwitchTab, animatedStyles]}/>
+            {/* <Animated.View style={[styles.activeSwitchTab]}/> */}
             <TouchableOpacity
-              style={{...tailwind('flex-1')}}
-              onPress={() =>  (offset.value = 0)}
+              style={{...tailwind('flex-1 flex-row')}}
+              onPress={() =>  setpage(0)}
               >
               <FontAwesomeIcon style={tailwind('text-white')} icon={['fas', 'chart-pie']}/>
               <Text style={tailwind('ml-2 text-white font-bold')}>Status</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={tailwind('flex-1')}
-              onPress={() =>  (offset.value = 200)}
+              style={tailwind('flex-1 flex-row')}
+              onPress={() => setpage(1)}
               >
               <FontAwesomeIcon style={{color: '#374151'}} icon={['fas', 'sliders-h']}/>
               <Text style={{...tailwind('ml-2 font-bold'),color: '#374151'}}>Control</Text>
@@ -141,98 +144,169 @@ function Dashboard({ navigation }) {
           <TouchableOpacity onPress={chooseTank} style={{...tailwind('bg-blue-100 rounded-lg px-24 h-10 justify-center items-center'), marginHorizontal: 16}}>
             <Text style={tailwind('text-blue-600 font-bold')}>{viewingTank}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.wrecktangleCard} onPress={()=> navigation.navigate('MetricDetail', { type: 'Temperature', viewingTank })}>
-              <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <View>
-                  <Text style={tailwind('font-bold text-gray-700 text-xl ml-4')}>Temperature</Text>
-                 {/* <Text style={tailwind('text-gray-500 text-sm mt-2')}>1 hr</Text>  */}
-                  <HealthBar status={2}/>
-                </View>
-                <View style={tailwind('justify-center')}>
-                  <Text style={tailwind('mt-8 font-bold text-gray-700 text-3xl')}>45 ℃</Text>
-                </View>
-              </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.wrecktangleCard} onPress={()=> navigation.navigate('MetricDetail', { type: 'Temperature', viewingTank })}>
-              <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <View>
-                  <Text style={tailwind('font-bold text-gray-700 text-xl ml-4')}>pH</Text>
-                 {/* <Text style={tailwind('text-gray-500 text-sm mt-2')}>1 hr</Text>  */}
-                  <HealthBar status={1}/>
-                </View>
-                <View style={tailwind('justify-center')}>
-                  <Text style={tailwind('mt-8 font-bold text-gray-700 text-3xl')}>4.6</Text>
-                </View>
-              </View>
-          </TouchableOpacity>
-
           
-
-          <TouchableOpacity style={styles.wrecktangleCard} onPress={()=> navigation.navigate('MetricDetail', { type: 'Temperature', viewingTank })}>
-              <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <View>
-                  <Text style={tailwind('font-bold text-gray-700 text-xl ml-4')}>Water Level</Text>
-                 {/* <Text style={tailwind('text-gray-500 text-sm mt-2')}>1 hr</Text>  */}
-                  <HealthBar status ={5}/>
-                </View>
-                <View style={tailwind('justify-center')}>
-                  <Text style={tailwind('mt-8 font-bold text-gray-700 text-3xl')}>25%</Text>
-                </View>
-              </View>
-          </TouchableOpacity>
-          
-          <View style={styles.smallerBoxesContainer}>
-            <TouchableOpacity style={ 
-              {...styles.smallerBoxStyle}
-            }
-            onPress={()=> navigation.navigate('MetricDetail', { type: 'pH', viewingTank })}>
-             
-              <View style={tailwind( 'flex-row justify-between p-5')}>
             
-                <View>
-                <Text style={tailwind('font-bold text-gray-700 text-lg')}>pH</Text>
+          {
+            page === 0 && (
+              <View style={tailwind('w-full items-center')} key="0">
+              <TouchableOpacity style={styles.wrecktangleCard} onPress={()=> navigation.navigate('MetricDetail', { type: 'Temperature', viewingTank })}>
+                  <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <View>
+                      <Text style={tailwind('font-bold text-gray-700 text-xl ml-4')}>Temperature</Text>
+                    {/* <Text style={tailwind('text-gray-500 text-sm mt-2')}>1 hr</Text>  */}
+                      <HealthBar status={2}/>
+                    </View>
+                    <View style={tailwind('justify-center')}>
+                      <Text style={tailwind('mt-8 font-bold text-gray-700 text-3xl')}>45 ℃</Text>
+                    </View>
+                  </View>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.wrecktangleCard} onPress={()=> navigation.navigate('MetricDetail', { type: 'Temperature', viewingTank })}>
+                  <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <View>
+                      <Text style={tailwind('font-bold text-gray-700 text-xl ml-4')}>pH</Text>
+                    {/* <Text style={tailwind('text-gray-500 text-sm mt-2')}>1 hr</Text>  */}
+                      <HealthBar status={1}/>
+                    </View>
+                    <View style={tailwind('justify-center')}>
+                      <Text style={tailwind('mt-8 font-bold text-gray-700 text-3xl')}>4.6</Text>
+                    </View>
+                  </View>
+              </TouchableOpacity>
+
+              
+
+              <TouchableOpacity style={styles.wrecktangleCard} onPress={()=> navigation.navigate('MetricDetail', { type: 'Temperature', viewingTank })}>
+                  <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <View>
+                      <Text style={tailwind('font-bold text-gray-700 text-xl ml-4')}>Water Level</Text>
+                    {/* <Text style={tailwind('text-gray-500 text-sm mt-2')}>1 hr</Text>  */}
+                      <HealthBar status ={5}/>
+                    </View>
+                    <View style={tailwind('justify-center')}>
+                      <Text style={tailwind('mt-8 font-bold text-gray-700 text-3xl')}>25%</Text>
+                    </View>
+                  </View>
+              </TouchableOpacity>
+              
+              <View style={styles.smallerBoxesContainer}>
+              <TouchableOpacity style={ 
+                {...styles.smallerBoxStyle}
+              }
+              onPress={()=> navigation.navigate('MetricDetail', { type: 'pH', viewingTank })}>
+              
+                <View style={tailwind( 'flex-row justify-between p-5')}>
+              
+                  <View>
+                  <Text style={tailwind('font-bold text-gray-700 text-lg')}>pH</Text>
+                  
+                  <View style={{height: 90, width: 100}}>
+                    <View style={tailwind('w-1/2 h-2 mt-8 bg-gray-300 rounded-full')}>
+                      <View style = {tailwind('w-1/2 bg-yellow-400 h-2 rounded-full')}>
+                      </View>
+                    </View>
+                  </View> 
+                  </View>
+                  <View style={tailwind('justify-center')}>
+                    <Text style={tailwind('font-bold text-gray-700 text-lg')}> 7.0</Text>
+                  </View>
                 
-                <View style={{height: 90, width: 100}}>
+                </View>
+              </TouchableOpacity> 
+              <TouchableOpacity style={
+                styles.smallerBoxStyle
+              }
+              onPress={()=> navigation.navigate('MetricDetail', { type: 'Water Level', viewingTank})}
+              >
+                <View style ={tailwind('flex-row justify-between p-5')}>
+                  <View>
+                  <Text style ={tailwind('font-bold text-gray-700 text-lg')}>Water Level</Text>
+                  
+                  <View style={{height: 90, width: 100}}>
                   <View style={tailwind('w-1/2 h-2 mt-8 bg-gray-300 rounded-full')}>
-                    <View style = {tailwind('w-1/2 bg-yellow-400 h-2 rounded-full')}>
+                    <View style = {tailwind('w-1/2 bg-red-400 h-2 rounded-full')}>
+
                     </View>
                   </View>
                 </View> 
-                </View>
-                <View style={tailwind('justify-center')}>
-                  <Text style={tailwind('font-bold text-gray-700 text-lg')}> 7.0</Text>
-                </View>
-              
-              </View>
-            </TouchableOpacity> 
-            <TouchableOpacity style={
-              styles.smallerBoxStyle
-            }
-            onPress={()=> navigation.navigate('MetricDetail', { type: 'Water Level', viewingTank})}
-            >
-              <View style ={tailwind('flex-row justify-between p-5')}>
-                <View>
-                <Text style ={tailwind('font-bold text-gray-700 text-lg')}>Water Level</Text>
-                
-                <View style={{height: 90, width: 100}}>
-                <View style={tailwind('w-1/2 h-2 mt-8 bg-gray-300 rounded-full')}>
-                  <View style = {tailwind('w-1/2 bg-red-400 h-2 rounded-full')}>
-
                   </View>
+                  <View style = {tailwind('justify-center')}>
+                  <Text style = {tailwind('font-bold text-gray-700 text-lg')}> 40%</Text>
                 </View>
-              </View> 
                 </View>
-                <View style = {tailwind('justify-center')}>
-                <Text style = {tailwind('font-bold text-gray-700 text-lg')}> 40%</Text>
-              </View>
-              </View>
+                
+              </TouchableOpacity>
+
+
+
               
-            </TouchableOpacity>
+            </View>
+            </View>
+            )
+          }
+            {
+              page ===1 && (
+                // <View style= {tailwind('flex-row py-6')}>
 
-
-
-            
-          </View>
+                <View style={tailwind('w-full h-full items-center py-6')} key="1">
+                  <View style={{...tailwind('bg-white px-6 flex-row justify-between items-center my-4'),
+                  height: 200, width: '80%', shadowColor: "#000", borderRadius: 12,
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.075,
+        shadowRadius: 7}}>
+                    <Text style={tailwind('text-gray-800 font-semibold text-2xl')}>
+                      Control Unit 1
+                    </Text>
+                    <Switch
+                        trackColor={{ false: "#767577", true: "#81b0ff" }}
+                        thumbColor={"#f4f3f4"}
+                        ios_backgroundColor="#3e3e3e"
+                        value={true}
+                      />
+                  </View>
+                  <View style={{...tailwind('bg-white px-6 flex-row justify-between items-center my-4'),
+                  height: 200, width: '80%', shadowColor: "#000", borderRadius: 12,
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.075,
+        shadowRadius: 7}}>
+                    <Text style={tailwind('text-gray-800 font-semibold text-2xl')}>
+                      Control Unit 1
+                    </Text>
+                    <Switch
+                        trackColor={{ false: "#767577", true: "#81b0ff" }}
+                        thumbColor={"#f4f3f4"}
+                        ios_backgroundColor="#3e3e3e"
+                        value={true}
+                      />
+                  </View>
+                  <View style={{...tailwind('bg-white px-6 flex-row justify-between items-center'),
+                  height: 100, width: '80%', shadowColor: "#000", borderRadius: 12,
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.075,
+        shadowRadius: 7}}>
+                    <Text style={tailwind('text-gray-800 font-semibold text-2xl')}>
+                      Control Unit 1
+                    </Text>
+                    <Switch
+                        trackColor={{ false: "#767577", true: "#81b0ff" }}
+                        thumbColor={"#f4f3f4"}
+                        ios_backgroundColor="#3e3e3e"
+                        value={true}
+                      />
+                  </View>
+               </View>
+             
+              )
+            }
         </View>
     </View>
   )
