@@ -41,6 +41,9 @@ function GreetingScreen({navigation}){
             <TouchableOpacity style={styles.getStartedButton} onPress={()=> navigation.navigate('Dashboard')}>
               <Text style={{...tailwind('font-bold text-base text-white uppercase tracking-wider'), fontFamily: 'Avenir'}}>Get Started</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={{...styles.getStartedButton, marginTop: 16}} onPress={()=> navigation.navigate('Login')}>
+              <Text style={{...tailwind('font-bold text-base text-white uppercase tracking-wider'), fontFamily: 'Avenir'}}>Login</Text>
+            </TouchableOpacity>
           </View>
         </>
       );

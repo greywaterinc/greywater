@@ -12,14 +12,32 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		232D4E608CA2F22F016C355D /* libPods-GreyWater-GreyWaterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13862AE8724E0406F4A3A5F9 /* libPods-GreyWater-GreyWaterTests.a */; };
+		2479E16FBC7346BFB3A25A07 /* Inter-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7CA1E722DCC426EB5A9D42C /* Inter-ExtraLight.otf */; };
+		2A3B68E22A58481E87E797E0 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701F24E33AD24226959B2DBF /* Inter-Regular.otf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* GreyWaterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* GreyWaterTests.m */; };
 		2F94749859ED4657508154EB /* libPods-GreyWater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12742D8643E406F48B845CAD /* libPods-GreyWater.a */; };
+		3E011CF16E6747AD85126F77 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6C7E82DD391A4A3B819C0A53 /* Inter-Bold.otf */; };
+		56D4AF1CD4784B4090F04CB4 /* Inter-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ACB2DDBC598410BA05C292B /* Inter-ExtraBoldItalic.otf */; };
+		574DCB3749DE4812B862886D /* Inter-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CFF63FE446DC44A7A74263D5 /* Inter-Medium.otf */; };
+		784308C3BAE54073A3F0EEFD /* Inter-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 250EBEF6701F45158945E467 /* Inter-Thin.otf */; };
+		801E42643249428E8A819E22 /* Inter-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E692E21A231D40FB8BC1723B /* Inter-Black.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		835DCE4FDDEB4BF586A6E387 /* Inter-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E922B2505C6140C499064168 /* Inter-Italic.otf */; };
 		92D09845482D9EA216C9564D /* libPods-GreyWater-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6655E6E2B6ECA192BD6780 /* libPods-GreyWater-tvOS.a */; };
+		9623688F85404EA8A3AB149C /* Inter-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 184F9AF847704A86884B5402 /* Inter-LightItalic.otf */; };
+		978C2C2D771B4157A36F9D8E /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 603DA565F9284E279A7F36EF /* Inter-SemiBold.otf */; };
+		988A5BA22B7D44D4B9C2577A /* Inter-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09305C85A0CF43E49FDCB833 /* Inter-ExtraLightItalic.otf */; };
 		A3FC5CAA27A0E091FD03DBED /* libPods-GreyWater-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B0D60BE17E3F69F43CDE6C /* libPods-GreyWater-tvOSTests.a */; };
+		BD15B4BB34B84A798FA5BCCD /* Inter-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 915A1B8459D04E5397F1900F /* Inter-SemiBoldItalic.otf */; };
+		C8EF93E2C22B4E29B28E04B6 /* Inter-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = DCFFB1E2CC5D4F99A79B2A10 /* Inter-ThinItalic.otf */; };
+		D61E5F89205F45F6B716E8F9 /* Inter-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 328718D47BA9497BB64EB291 /* Inter-MediumItalic.otf */; };
+		E24FBFBD4FC24D76AE1BB0C9 /* Inter-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BFA28A5F756B4AB095273BC8 /* Inter-BoldItalic.otf */; };
+		E52A94FF31B04D808FB705DB /* Inter-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 873104046FBC482BBA0A8F8A /* Inter-ExtraBold.otf */; };
+		E748A314CDB9446A93C36D72 /* Inter-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 12583A784C904A8D8A9B653E /* Inter-BlackItalic.otf */; };
+		F32A419940864EC49636204C /* Inter-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5C04637A1ED34755BFCBC75F /* Inter-Light.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +63,8 @@
 		00E356EE1AD99517003FC87E /* GreyWaterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GreyWaterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* GreyWaterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GreyWaterTests.m; sourceTree = "<group>"; };
+		09305C85A0CF43E49FDCB833 /* Inter-ExtraLightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraLightItalic.otf"; path = "../src/assets/fonts/Inter-ExtraLightItalic.otf"; sourceTree = "<group>"; };
+		12583A784C904A8D8A9B653E /* Inter-BlackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-BlackItalic.otf"; path = "../src/assets/fonts/Inter-BlackItalic.otf"; sourceTree = "<group>"; };
 		12742D8643E406F48B845CAD /* libPods-GreyWater.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GreyWater.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13862AE8724E0406F4A3A5F9 /* libPods-GreyWater-GreyWaterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GreyWater-GreyWaterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* GreyWater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreyWater.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,18 +73,34 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GreyWater/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = GreyWater/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = GreyWater/main.m; sourceTree = "<group>"; };
+		184F9AF847704A86884B5402 /* Inter-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-LightItalic.otf"; path = "../src/assets/fonts/Inter-LightItalic.otf"; sourceTree = "<group>"; };
 		18E322AED3B12EEE657EABAF /* Pods-GreyWater.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreyWater.debug.xcconfig"; path = "Target Support Files/Pods-GreyWater/Pods-GreyWater.debug.xcconfig"; sourceTree = "<group>"; };
 		1CF6623CC18C8DD3B771F501 /* Pods-GreyWater-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreyWater-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-GreyWater-tvOS/Pods-GreyWater-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		250EBEF6701F45158945E467 /* Inter-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Thin.otf"; path = "../src/assets/fonts/Inter-Thin.otf"; sourceTree = "<group>"; };
 		253356CDCE7495675A2C3320 /* Pods-GreyWater-GreyWaterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreyWater-GreyWaterTests.debug.xcconfig"; path = "Target Support Files/Pods-GreyWater-GreyWaterTests/Pods-GreyWater-GreyWaterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* GreyWater-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GreyWater-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* GreyWater-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GreyWater-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		328718D47BA9497BB64EB291 /* Inter-MediumItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-MediumItalic.otf"; path = "../src/assets/fonts/Inter-MediumItalic.otf"; sourceTree = "<group>"; };
 		55B0D60BE17E3F69F43CDE6C /* libPods-GreyWater-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GreyWater-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C04637A1ED34755BFCBC75F /* Inter-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Light.otf"; path = "../src/assets/fonts/Inter-Light.otf"; sourceTree = "<group>"; };
 		5C8B30EE3FC7A81AE274FD1B /* Pods-GreyWater.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreyWater.release.xcconfig"; path = "Target Support Files/Pods-GreyWater/Pods-GreyWater.release.xcconfig"; sourceTree = "<group>"; };
+		603DA565F9284E279A7F36EF /* Inter-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBold.otf"; path = "../src/assets/fonts/Inter-SemiBold.otf"; sourceTree = "<group>"; };
+		6ACB2DDBC598410BA05C292B /* Inter-ExtraBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraBoldItalic.otf"; path = "../src/assets/fonts/Inter-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
+		6C7E82DD391A4A3B819C0A53 /* Inter-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Bold.otf"; path = "../src/assets/fonts/Inter-Bold.otf"; sourceTree = "<group>"; };
+		701F24E33AD24226959B2DBF /* Inter-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.otf"; path = "../src/assets/fonts/Inter-Regular.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = GreyWater/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		873104046FBC482BBA0A8F8A /* Inter-ExtraBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraBold.otf"; path = "../src/assets/fonts/Inter-ExtraBold.otf"; sourceTree = "<group>"; };
 		8F2B6E543CFB24FDCD8397F5 /* Pods-GreyWater-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreyWater-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-GreyWater-tvOSTests/Pods-GreyWater-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		915A1B8459D04E5397F1900F /* Inter-SemiBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBoldItalic.otf"; path = "../src/assets/fonts/Inter-SemiBoldItalic.otf"; sourceTree = "<group>"; };
 		A45C87BBCF0D3EED52E787E5 /* Pods-GreyWater-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreyWater-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-GreyWater-tvOSTests/Pods-GreyWater-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BFA28A5F756B4AB095273BC8 /* Inter-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-BoldItalic.otf"; path = "../src/assets/fonts/Inter-BoldItalic.otf"; sourceTree = "<group>"; };
 		C43A9734476D652958C06C33 /* Pods-GreyWater-GreyWaterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreyWater-GreyWaterTests.release.xcconfig"; path = "Target Support Files/Pods-GreyWater-GreyWaterTests/Pods-GreyWater-GreyWaterTests.release.xcconfig"; sourceTree = "<group>"; };
 		CD6655E6E2B6ECA192BD6780 /* libPods-GreyWater-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GreyWater-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFF63FE446DC44A7A74263D5 /* Inter-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Medium.otf"; path = "../src/assets/fonts/Inter-Medium.otf"; sourceTree = "<group>"; };
+		DCFFB1E2CC5D4F99A79B2A10 /* Inter-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ThinItalic.otf"; path = "../src/assets/fonts/Inter-ThinItalic.otf"; sourceTree = "<group>"; };
+		E692E21A231D40FB8BC1723B /* Inter-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Black.otf"; path = "../src/assets/fonts/Inter-Black.otf"; sourceTree = "<group>"; };
+		E7CA1E722DCC426EB5A9D42C /* Inter-ExtraLight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraLight.otf"; path = "../src/assets/fonts/Inter-ExtraLight.otf"; sourceTree = "<group>"; };
+		E922B2505C6140C499064168 /* Inter-Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Italic.otf"; path = "../src/assets/fonts/Inter-Italic.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -164,6 +200,31 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		63FBDB9F76A2417F9066F313 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E692E21A231D40FB8BC1723B /* Inter-Black.otf */,
+				12583A784C904A8D8A9B653E /* Inter-BlackItalic.otf */,
+				6C7E82DD391A4A3B819C0A53 /* Inter-Bold.otf */,
+				BFA28A5F756B4AB095273BC8 /* Inter-BoldItalic.otf */,
+				873104046FBC482BBA0A8F8A /* Inter-ExtraBold.otf */,
+				6ACB2DDBC598410BA05C292B /* Inter-ExtraBoldItalic.otf */,
+				E7CA1E722DCC426EB5A9D42C /* Inter-ExtraLight.otf */,
+				09305C85A0CF43E49FDCB833 /* Inter-ExtraLightItalic.otf */,
+				E922B2505C6140C499064168 /* Inter-Italic.otf */,
+				5C04637A1ED34755BFCBC75F /* Inter-Light.otf */,
+				184F9AF847704A86884B5402 /* Inter-LightItalic.otf */,
+				CFF63FE446DC44A7A74263D5 /* Inter-Medium.otf */,
+				328718D47BA9497BB64EB291 /* Inter-MediumItalic.otf */,
+				701F24E33AD24226959B2DBF /* Inter-Regular.otf */,
+				603DA565F9284E279A7F36EF /* Inter-SemiBold.otf */,
+				915A1B8459D04E5397F1900F /* Inter-SemiBoldItalic.otf */,
+				250EBEF6701F45158945E467 /* Inter-Thin.otf */,
+				DCFFB1E2CC5D4F99A79B2A10 /* Inter-ThinItalic.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +241,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				3D3D8C277983292B6379DC22 /* Pods */,
+				63FBDB9F76A2417F9066F313 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -294,7 +356,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = CNVZL8L4WH;
+						DevelopmentTeam = 3MBKA7DHQ8;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -343,6 +405,24 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				801E42643249428E8A819E22 /* Inter-Black.otf in Resources */,
+				E748A314CDB9446A93C36D72 /* Inter-BlackItalic.otf in Resources */,
+				3E011CF16E6747AD85126F77 /* Inter-Bold.otf in Resources */,
+				E24FBFBD4FC24D76AE1BB0C9 /* Inter-BoldItalic.otf in Resources */,
+				E52A94FF31B04D808FB705DB /* Inter-ExtraBold.otf in Resources */,
+				56D4AF1CD4784B4090F04CB4 /* Inter-ExtraBoldItalic.otf in Resources */,
+				2479E16FBC7346BFB3A25A07 /* Inter-ExtraLight.otf in Resources */,
+				988A5BA22B7D44D4B9C2577A /* Inter-ExtraLightItalic.otf in Resources */,
+				835DCE4FDDEB4BF586A6E387 /* Inter-Italic.otf in Resources */,
+				F32A419940864EC49636204C /* Inter-Light.otf in Resources */,
+				9623688F85404EA8A3AB149C /* Inter-LightItalic.otf in Resources */,
+				574DCB3749DE4812B862886D /* Inter-Medium.otf in Resources */,
+				D61E5F89205F45F6B716E8F9 /* Inter-MediumItalic.otf in Resources */,
+				2A3B68E22A58481E87E797E0 /* Inter-Regular.otf in Resources */,
+				978C2C2D771B4157A36F9D8E /* Inter-SemiBold.otf in Resources */,
+				BD15B4BB34B84A798FA5BCCD /* Inter-SemiBoldItalic.otf in Resources */,
+				784308C3BAE54073A3F0EEFD /* Inter-Thin.otf in Resources */,
+				C8EF93E2C22B4E29B28E04B6 /* Inter-ThinItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +755,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CNVZL8L4WH;
+				DEVELOPMENT_TEAM = 3MBKA7DHQ8;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = GreyWater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -684,7 +764,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.greywater.app;
 				PRODUCT_NAME = GreyWater;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -699,7 +779,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CNVZL8L4WH;
+				DEVELOPMENT_TEAM = 3MBKA7DHQ8;
 				INFOPLIST_FILE = GreyWater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -707,7 +787,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.greywater.app;
 				PRODUCT_NAME = GreyWater;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
