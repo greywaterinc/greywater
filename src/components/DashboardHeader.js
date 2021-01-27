@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     
 })
 
-function DashboardHeader() {
+function DashboardHeader({ isNameing=false }) {
 
     const boxes = ['Kris Greywater', 'Mashiat Greywater'];
     const [viewingBox, setBox] = useState('Mashiat Greywater');
@@ -73,21 +73,31 @@ function DashboardHeader() {
 
     return (
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 18, marginBottom: 16 }}>
-          <TouchableOpacity style={styles.something} onPress={chooseBox}>
-            <View style={{height: 8, width: 8, borderRadius: 4, backgroundColor: '#FBBF24', marginRight: 8}}></View>
-            <Text style={tailwind('font-medium text-lg text-white')}>{viewingBox}</Text>
-          </TouchableOpacity>
+          {
+            !isNameing && (
+              <TouchableOpacity style={styles.something} onPress={chooseBox}>
+                <View style={{height: 8, width: 8, borderRadius: 4, backgroundColor: '#FBBF24', marginRight: 8}}></View>
+                <Text style={tailwind('font-medium text-lg text-white')}>{viewingBox}</Text>
+              </TouchableOpacity>
+            )
+          }
           <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity 
-                onPress={() => {
-                    setModalVisible(!modalVisible);
-                  }}
-                style={{...tailwind('h-12 w-12 rounded-full justify-center items-center'), backgroundColor: 'rgba(255, 255, 255, 0.1)'}}>
-              <FontAwesomeIcon style={{color: 'white'}} icon={['fas', 'bell']} size={18}/>
-            </TouchableOpacity>
-            <TouchableOpacity style={{...tailwind('ml-2 h-12 w-12 rounded-full justify-center items-center'), backgroundColor: 'rgba(255, 255, 255, 0.1)'}}>
-              <FontAwesomeIcon style={{color: 'white'}} icon={['fas', 'cog']} size={18}/>
-            </TouchableOpacity>
+            {
+              !isNameing && (
+                <>
+                  <TouchableOpacity 
+                    onPress={() => {
+                        setModalVisible(!modalVisible);
+                      }}
+                    style={{...tailwind('h-12 w-12 rounded-full justify-center items-center'), backgroundColor: 'rgba(255, 255, 255, 0.1)'}}>
+                  <FontAwesomeIcon style={{color: 'white'}} icon={['fas', 'bell']} size={18}/>
+                </TouchableOpacity>
+                <TouchableOpacity style={{...tailwind('ml-2 h-12 w-12 rounded-full justify-center items-center'), backgroundColor: 'rgba(255, 255, 255, 0.1)'}}>
+                  <FontAwesomeIcon style={{color: 'white'}} icon={['fas', 'cog']} size={18}/>
+                </TouchableOpacity>
+                </>
+              )
+            }
           </View>
           <Modal
             animationType="slide"

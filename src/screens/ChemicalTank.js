@@ -5,7 +5,8 @@ import ViewPager from '@react-native-community/viewpager';
 import VesselMarker from '../components/VesselMarker';
 import TankStatusIndicator from '../components/TankStatusIndicator';
 import { gql, useSubscription } from '@apollo/client'
-
+import { useAnimation } from 'react-native-animation-hooks'
+import { Popup } from 'popup-ui'
 
 const styles = StyleSheet.create({
   container: {
@@ -75,15 +76,13 @@ function ChemicalTank() {
 
   const { data, loading, error } = useSubscription(SUBSCRIBE_CHEMICAL_TANK);
   const pagerRef = useRef(null);
-  const growAnim = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    Animated.timing(growAnim, {
-      toValue: 200,
-      duration: 600,
-      useNativeDriver: false
-    }).start();
-  }, [])
+  const animatedValue = useAnimation({
+    type: 'timing',
+    initialValue: 0,
+    toValue: data ? (data.deviceStatus.measurements[0]['value']==='HIGH'?200:50) : 200,
+    duration: 600,
+    useNativeDriver: false,
+  })
 
   return (
     <View style={styles.container}>
@@ -99,11 +98,20 @@ function ChemicalTank() {
                 colors={['#ECE9AD', '#9ABFAB']}
                 start={{x: 0.5, y: 0}} end={{x: 0.5, y: 1}}
                 style={styles.thresholdGradient}>
-                <Animated.View style={[{width: '100%'}, { height: growAnim }]}/>
+                <Animated.View style={[{width: '100%'}, { height: animatedValue }]}/>
               </LinearGradient>
             </View>
             <TouchableOpacity 
-              onPress={() => grow()}
+              onPress={() =>
+                Popup.show({
+                  type: 'Success',
+                  title: 'All good',
+                  button: true,
+                  textBody: 'You’re all set for Chemical Tank!',
+                  buttonText: 'Ok',
+                  callback: () => Popup.hide()
+                })
+              }
               style={styles.statusDescriptor}>
               {
                 !loading && (

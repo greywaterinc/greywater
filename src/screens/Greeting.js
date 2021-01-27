@@ -38,7 +38,7 @@ function GreetingScreen({navigation}){
           <LottieView style={{ height: 'auto', width: '100%'}} source={require('../assets/animations/wave2.json')} autoPlay loop />
           {/* <LottieView style={{ height: 'auto', width: '100%'}} source={require('../assets/animations/wave2.json')} autoPlay loop /> */}
           <View style={{backgroundColor: 'white', width: '100%', height: '50%', alignItems: 'center', justifyContent: 'center'}}>
-            <TouchableOpacity style={styles.getStartedButton} onPress={()=> navigation.navigate('Dashboard')}>
+            <TouchableOpacity style={styles.getStartedButton} onPress={()=> navigation.navigate('QRScreen')}>
               <Text style={{...tailwind('font-bold text-base text-white uppercase tracking-wider'), fontFamily: 'Avenir'}}>Get Started</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{...styles.getStartedButton, marginTop: 16}} onPress={()=> navigation.navigate('Login')}>

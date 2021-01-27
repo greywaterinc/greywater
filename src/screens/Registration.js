@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -67,7 +67,15 @@ const styles = StyleSheet.create({
   },
 });
 
-function Registration() {
+function Registration({ navigation }) {
+
+  const [registrationInfo, setRegistrationInfo] = useState({
+    email: '',
+    name: '',
+    role: 'Admin',
+    password: ''
+  })
+
   return (
     <SafeAreaView>
       <Image
@@ -80,26 +88,34 @@ function Registration() {
           <View style={styles.formField}>
             <Text style={styles.formText}>Full Name</Text>
             <TextInput 
+              onChangeText={name => setRegistrationInfo({...registrationInfo, name})}
               placeholder="Enter full name"
               style={styles.formInput} />
           </View>
           <View style={styles.formField}>
             <Text style={styles.formText}>Email Address</Text>
             <TextInput
+              onChangeText={email => setRegistrationInfo({...registrationInfo, email})}
               style={styles.formInput}
+              autoCapitalize='none'
               placeholder="Enter email address"
             />
           </View>
           <View style={styles.formField}>
             <Text style={styles.formText}>Password</Text>
             <TextInput
+              onChangeText={password => setRegistrationInfo({...registrationInfo, password})}
               secureTextEntry
               style={styles.formInput}
               placeholder="Enter new password"
             />
           </View>
         </View>
-        <TouchableOpacity style={styles.registerButton}>
+        <TouchableOpacity onPress={async () => {
+          navigation.navigate('OTPVerification', {
+            registrationInfo
+          })
+        }} style={styles.registerButton}>
           <Text style={styles.registerButtonText}>Continue</Text>
         </TouchableOpacity>
       </View>

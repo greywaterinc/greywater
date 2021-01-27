@@ -10,11 +10,13 @@ import GreetingScreen from './src/screens/Greeting'
 import Briefing from './src/screens/Briefing'
 import DashboardScreen from './src/screens/Dashboard';
 import LoginScreen from './src/screens/Login';
+import QRScreen from './src/screens/Onboard';
 import Splash from './src/screens/Splash'
 import DeviceFound from './src/screens/DeviceFound'
 import OTPVerifcation from './src/screens/OTPVerification';
 import Registration from './src/screens/Registration';
 import DeviceTaken from './src/screens/DeviceTaken';
+import NameDevice from './src/screens/NameDevice';
 import { useAppDispatch, useAppState } from './src/contexts/app';
 
 library.add(fas);
@@ -62,6 +64,8 @@ function App() {
             </>
           ): (<>
             <Stack.Screen name="Onboard" component={Briefing} />
+            <Stack.Screen name="QRScreen" component={QRScreen} />
+            <Stack.Screen name="NameDevice" component={NameDevice} />
             <Stack.Screen name="Greeting" component={GreetingScreen} />
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="DeviceTaken" component={DeviceTaken} />

@@ -1,8 +1,9 @@
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {View, StyleSheet, Text, SafeAreaView} from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import tailwind from 'tailwind-rn';
+import { useMutation, gql } from '@apollo/client'
 
 const styles = StyleSheet.create({
   header: {
@@ -65,7 +66,6 @@ const styles = StyleSheet.create({
   },
   verifyButton: {
     alignSelf: 'center',
-    marginTop: '60%',
     backgroundColor: '#6585DD',
     height: 44,
     width: 240,
@@ -81,7 +81,26 @@ const styles = StyleSheet.create({
   },
 });
 
-function OTPVerifcation({email = 'greywater@mashiat.live'}) {
+function OTPVerifcation({navigation, route}) {
+
+  const { registrationInfo } = route.params;
+  const SEND_OTP = gql`
+    mutation sendOTP($code: String, $address: String) {
+      sendVerificationCode(code: $code, address: $address)
+    }
+  `
+  const [sendOtp, { loading }] = useMutation(SEND_OTP)
+
+  useEffect(() => {
+    sendOtp({
+      variables: {
+        code: [0,0,0,0].map(digit => Math.floor(Math.random() * 9) + 1  ).join(''),
+        address: registrationInfo.email
+      }
+    })
+  }, [])
+  
+
   return (
     <SafeAreaView>
       <View style={styles.header}>
@@ -97,22 +116,22 @@ function OTPVerifcation({email = 'greywater@mashiat.live'}) {
             Please Enter OTP for verification
           </Text>
           <Text style={styles.otpInstructionSubtext}>
-            Code was sent to {email}
+            Code was sent to {registrationInfo.email}
           </Text>
         </View>
       </View>
       <View style={styles.otpInput}>
         <View style={styles.otpInputBlock}>
-          <TextInput />
+          <TextInput keyboardType='number-pad' style={{width: '100%', fontFamily: 'Inter', fontWeight: '600', fontSize: 40, padding: 10}}/>
         </View>
         <View style={styles.otpInputBlock}>
-          <TextInput />
+          <TextInput keyboardType='number-pad' style={{width: '100%', fontFamily: 'Inter', fontWeight: '600', fontSize: 40, padding: 10}}/>
         </View>
         <View style={styles.otpInputBlock}>
-          <TextInput />
+          <TextInput keyboardType='number-pad' style={{width: '100%', fontFamily: 'Inter', fontWeight: '600', fontSize: 40, padding: 10}}/>
         </View>
         <View style={styles.otpInputBlock}>
-          <TextInput />
+          <TextInput keyboardType='number-pad' style={{width: '100%', fontFamily: 'Inter', fontWeight: '600', fontSize: 40, padding: 10}}/>
         </View>
       </View>
       <View style={styles.otpHint}>
@@ -125,9 +144,11 @@ function OTPVerifcation({email = 'greywater@mashiat.live'}) {
           <Text style={styles.otpResendButtonText}>Resend</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.verifyButton}>
-        <Text style={styles.verifyButtonText}>Verify</Text>
-      </TouchableOpacity>
+      <View style={{marginTop: '60%'}}>
+        <TouchableOpacity style={styles.verifyButton} onPress={() => navigation.navigate('NameDevice')}>
+          <Text style={styles.verifyButtonText}>Verify</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }

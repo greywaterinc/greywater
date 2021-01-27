@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   }
 })
 
-function DeviceFound() {
+function DeviceFound({ navigation }) {
   return (
     <View style={styles.container}>
       <SafeAreaView >
@@ -60,7 +60,7 @@ function DeviceFound() {
           <Text style={styles.messageSubtitle}>
             You’re on the way to saving a lot of water.
           </Text>
-          <TouchableOpacity style={styles.actionButton}>
+          <TouchableOpacity onPress={() => navigation.navigate('Registration')} style={styles.actionButton}>
             <Text style={styles.actionButtonText}>Continue</Text>
           </TouchableOpacity>
         </View>

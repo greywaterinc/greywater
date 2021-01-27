@@ -4,6 +4,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import ViewPager from '@react-native-community/viewpager';
 import VesselMarker from '../components/VesselMarker';
 import TankStatusIndicator from '../components/TankStatusIndicator';
+import { gql, useSubscription } from '@apollo/client'
+import { useAnimation } from 'react-native-animation-hooks'
+
 
 const styles = StyleSheet.create({
   container: {
@@ -59,12 +62,29 @@ const styles = StyleSheet.create({
   },
 });
 
+const SUBSCRIBE_COLLECTION_TANK = gql`
+  subscription getDeviceStatus {
+    deviceStatus(id: "gw01", tank: "collection") {
+      measurements {
+        value
+      }
+    }
+  }
+`
+
 function CollectionTank() {
   const pagerRef = useRef(null);
-  const growAnim = useRef(new Animated.Value(0)).current;
+  const { data, loading, error } = useSubscription(SUBSCRIBE_COLLECTION_TANK);
+  const animatedValue = useAnimation({
+    type: 'timing',
+    initialValue: 0,
+    toValue: data ? (data.deviceStatus.measurements[0]['value']==='HIGH'?200:50) : 200,
+    duration: 600,
+    useNativeDriver: false,
+  })
 
   useEffect(() => {
-    Animated.timing(growAnim, {
+    Animated.timing(animatedValue, {
       toValue: 200,
       duration: 1000,
       useNativeDriver: false,
@@ -93,17 +113,21 @@ function CollectionTank() {
                 start={{x: 0.5, y: 0}}
                 end={{x: 0.5, y: 1}}
                 style={styles.thresholdGradient}>
-                <Animated.View style={[{width: '100%'}, {height: growAnim}]} />
+                <Animated.View style={[{width: '100%'}, {height: animatedValue}]} />
               </LinearGradient>
             </View>
             <TouchableOpacity style={styles.statusDescriptor}>
-              <TankStatusIndicator status="shit" />
-              <View>
-                <Text style={styles.statusTankTitle}>Water Level</Text>
-                <Text style={styles.statusTankDescription}>
-                  {'The system will do another\nround of treatment.'}
-                </Text>
-              </View>
+              {
+                !loading && (
+                  <>
+                    <TankStatusIndicator status={data.deviceStatus.measurements[0]['value']}/>
+                    <View>
+                      <Text style={styles.statusTankTitle}>Water Level</Text>
+                      <Text style={styles.statusTankDescription}>{data.deviceStatus.measurements[0]['value']==='HIGH'?'Good ':'The system will do another round\n of treatment.'}</Text>
+                    </View>
+                  </>
+                )
+              }
             </TouchableOpacity>
           </View>
         </View>

@@ -5,6 +5,7 @@ import ViewPager from '@react-native-community/viewpager';
 import VesselMarker from '../components/VesselMarker';
 import TankStatusIndicator from '../components/TankStatusIndicator';
 import { gql, useSubscription } from '@apollo/client'
+import { Popup } from 'popup-ui'
 
 const styles = StyleSheet.create({
   container: {
@@ -71,7 +72,7 @@ const SUBSCRIBE_ICEAS_TANK = gql`
 `
 
 function ICEASTank() {
-  const { data, loading, error } = useSubscription(SUBSCRIBE_ICEAS_TANK);
+  // const { data, loading, error } = useSubscription(SUBSCRIBE_ICEAS_TANK);
   const pagerRef = useRef(null);
   const growAnim = useRef(new Animated.Value(0)).current;
 
@@ -108,18 +109,23 @@ function ICEASTank() {
                 <Animated.View style={[{width: '100%'}, {height: growAnim}]} />
               </LinearGradient>
             </View>
-            <TouchableOpacity style={styles.statusDescriptor}>
-              {
-                !loading && (
-                  <>
-                    <TankStatusIndicator status={data.deviceStatus.measurements[0]['value']}/>
-                    <View>
-                      <Text style={styles.statusTankTitle}>Water Level</Text>
-                      <Text style={styles.statusTankDescription}>{data.deviceStatus.measurements[0]['value']==='HIGH'?'Good ':'The system will do another round\n of treatment.'}</Text>
-                    </View>
-                  </>
-                )
+            <TouchableOpacity 
+              onPress={() =>
+                Popup.show({
+                  type: 'Success',
+                  title: 'All good',
+                  button: true,
+                  textBody: 'You’re all set for ICEAS Tank!',
+                  buttonText: 'Ok',
+                  callback: () => Popup.hide()
+                })
               }
+              style={styles.statusDescriptor}>
+              <TankStatusIndicator status="HIGH"/>
+                <View>
+                  <Text style={styles.statusTankTitle}>Water Level</Text>
+                  <Text style={styles.statusTankDescription}>{'Good'}</Text>
+                </View>
             </TouchableOpacity>
           </View>
         </View>

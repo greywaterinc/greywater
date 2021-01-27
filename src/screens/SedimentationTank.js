@@ -14,6 +14,8 @@ import VesselMarker from '../components/VesselMarker';
 import TankStatusIndicator from '../components/TankStatusIndicator';
 import HealthBar from '../components/HealthBar';
 import moment from 'moment';
+import { useAnimation } from 'react-native-animation-hooks'
+import { useSubscription, gql } from '@apollo/client'
 
 
 const styles = StyleSheet.create({
@@ -70,19 +72,37 @@ const styles = StyleSheet.create({
   },
 });
 
+const SUBSCRIBE_SEDIMENTATION_TANK = gql`
+  subscription getDeviceStatus {
+    deviceStatus(id: "gw01", tank: "sedimentation") {
+      measurements {
+        name
+        value
+      }
+    }
+  }
+`
+
 function SedimentationTank() {
   const pagerRef = useRef(null);
-  const growAnim = useRef(new Animated.Value(0)).current;
+  const { data, loading, error } = useSubscription(SUBSCRIBE_SEDIMENTATION_TANK);
+  const animatedValue = useAnimation({
+    type: 'timing',
+    initialValue: 0,
+    toValue: data ? (data.deviceStatus.measurements[0]['value']==='HIGH'?200:50) : 200,
+    duration: 600,
+    useNativeDriver: false,
+  })
 
   useEffect(() => {
-    Animated.timing(growAnim, {
+    Animated.timing(animatedValue, {
       toValue: 200,
       duration: 1000,
       useNativeDriver: false,
     }).start();
   }, []);
 
-  const [data, setData] = useState({
+  const [chartData, setData] = useState({
     labels: [7, 6, 5, 4, 3, 2, 1, 0].map((hourToSubtract) => {
       const now = new Date();
       return hourToSubtract === 0 ? 'Current' : now.getHours() - hourToSubtract;
@@ -117,19 +137,22 @@ function SedimentationTank() {
                 start={{x: 0.5, y: 0}}
                 end={{x: 0.5, y: 1}}
                 style={styles.thresholdGradient}>
-                <Animated.View style={[{width: '100%'}, {height: growAnim}]} />
+                <Animated.View style={[{width: '100%'}, {height: animatedValue}]} />
               </LinearGradient>
             </View>
             <TouchableOpacity
-              onPress={() => grow()}
               style={styles.statusDescriptor}>
-              <TankStatusIndicator status="shit" />
-              <View>
-                <Text style={styles.statusTankTitle}>Water Level</Text>
-                <Text style={styles.statusTankDescription}>
-                  {'The system will do another\nround of treatment.'}
-                </Text>
-              </View>
+              {
+                !loading && (
+                  <>
+                    <TankStatusIndicator status={data.deviceStatus.measurements[0]['value']}/>
+                    <View>
+                      <Text style={styles.statusTankTitle}>Water Level</Text>
+                      <Text style={styles.statusTankDescription}>{data.deviceStatus.measurements[0]['value']==='HIGH'?'Good chemical level':'Chemical level is low,\nContact your admin for support'}</Text>
+                    </View>
+                  </>
+                )
+              }
             </TouchableOpacity>
           </View>
         </View>
@@ -177,7 +200,7 @@ function SedimentationTank() {
               </View>
             </View>
             <LineChart
-              data={data}
+              data={chartData}
               withDots={false}
               width={340} // from react-native
               height={160}
@@ -284,7 +307,7 @@ function SedimentationTank() {
               </View>
             </View>
             <LineChart
-              data={data}
+              data={chartData}
               withDots={false}
               width={340} // from react-native
               height={160}

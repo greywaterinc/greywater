@@ -1,11 +1,18 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import {View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import LottieView from 'lottie-react-native';
 // import QRCodeScanner from 'react-native-qrcode-scanner';
 // import { RNCamera } from 'react-native-camera';
 
 const style = StyleSheet.create({
+  logo: {
+    marginTop: '30%',
+    alignSelf: 'center',
+    width: 76,
+    height: 76,
+  },
   linearGradient: {
     width: '100%',
     height: '30%',
@@ -34,7 +41,7 @@ const style = StyleSheet.create({
   }
 })
 
-function LoginScreen() {
+function QRScreen({ navigation }) {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
         <LinearGradient
@@ -43,13 +50,16 @@ function LoginScreen() {
           end={{x: 0.0, y: 1.0}}
           locations={[0, 0.8]} style={style.linearGradient}
         >
-          <Text>Welcome to GreyWater</Text>
+          <Image
+            source={require('../assets/images/logo.png')}
+            style={style.logo}
+          />
         </LinearGradient>
         <Text style={style.scanInstructionTitle}>Scan QR Code</Text>
         <View style={style.cameraBlock}>
-          <FontAwesomeIcon icon={['fas', 'qrcode']} size={72} color="#d8d8d8" />
+          <LottieView style={{ height: 'auto', width: '100%'}} source={require('../assets/animations/scan.json')} autoPlay loop />
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('DeviceFound')}>
           <View style={{ width: 56, height: 56, borderRadius: 28, backgroundColor: '#31D8AC',borderColor: '#45EEC1', borderWidth: 4, alignItems: 'center', justifyContent: 'center', marginTop: 48}}>
             <FontAwesomeIcon icon={['fas', 'expand']} size={28} color="#fff" />
           </View>
@@ -58,4 +68,4 @@ function LoginScreen() {
       </View>
     );
   }
-  export default LoginScreen;
+  export default QRScreen;

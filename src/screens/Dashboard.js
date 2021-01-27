@@ -13,6 +13,7 @@ import OZoneContactTank from './OZoneContactTank';
 import ICEASTank from './ICEASTank';
 import CollectionTank from './CollectionTank';
 import StorageTank from './StorageTank';
+import { Root } from 'popup-ui';
 
 const styles = StyleSheet.create({
   logo: {
@@ -261,27 +262,29 @@ function Dashboard() {
   });
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../assets/images/logo.png')}
-        style={styles.logo}
-      />
-      <DashboardHeader />
-      <View style={styles.card}>
-        <AllTanks />
-      </View>
-      <SwipeablePanel
-        {...panelProps}
-        style={{height: '70%'}}
-        isActive={isTankPanelOpen}
-        showCloseButton={false}
-        onlyLarge={true}>
-        <View style={{flex: 1, height: 480}}>
-          <TankView tank={viewingTank} />
+    <Root>
+      <View style={styles.container}>
+        <Image
+          source={require('../assets/images/logo.png')}
+          style={styles.logo}
+        />
+        <DashboardHeader />
+        <View style={styles.card}>
+          <AllTanks />
         </View>
-        <BackButton />
-      </SwipeablePanel>
-    </View>
+        <SwipeablePanel
+          {...panelProps}
+          style={{height: '70%'}}
+          isActive={isTankPanelOpen}
+          showCloseButton={false}
+          onlyLarge={true}>
+          <View style={{flex: 1, height: 480}}>
+            <TankView tank={viewingTank} />
+          </View>
+          <BackButton />
+        </SwipeablePanel>
+      </View>
+    </Root>
   );
 }
 

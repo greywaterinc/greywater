@@ -5,6 +5,8 @@ import ViewPager from '@react-native-community/viewpager';
 import VesselMarker from '../components/VesselMarker';
 import TankStatusIndicator from '../components/TankStatusIndicator';
 import { gql, useSubscription } from '@apollo/client'
+import { useAnimation } from 'react-native-animation-hooks'
+import { Popup } from 'popup-ui'
 
 const styles = StyleSheet.create({
   container: {
@@ -73,8 +75,20 @@ const SUBSCRIBE_OZONE_TANK = gql`
 function OzoneContactTank() {
   const { data, loading, error } = useSubscription(SUBSCRIBE_OZONE_TANK);
   const pagerRef = useRef(null);
-  const waterLevelAnim = useRef(new Animated.Value(0)).current;
-  const organicPollutantAnim = useRef(new Animated.Value(0)).current;
+  const waterLevelAnim = useAnimation({
+    type: 'timing',
+    initialValue: 0,
+    toValue: data ? (data.deviceStatus.measurements[0]['value']==='HIGH'?200:50) : 200,
+    duration: 600,
+    useNativeDriver: false,
+  })
+  const organicPollutantAnim = useAnimation({
+    type: 'timing',
+    initialValue: 0,
+    toValue: data ? (data.deviceStatus.measurements[1]['value']==='HIGH'?200:50) : 200,
+    duration: 600,
+    useNativeDriver: false,
+  })
 
   useEffect(() => {
     Animated.timing(waterLevelAnim, {
@@ -94,7 +108,7 @@ function OzoneContactTank() {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Text style={styles.tankTitle}>ICEAS Tank</Text>
+        <Text style={styles.tankTitle}>Ozone Tank</Text>
       </View>
       <ViewPager
         style={{width: '100%', height: '100%'}}
@@ -122,7 +136,18 @@ function OzoneContactTank() {
                 />
               </LinearGradient>
             </View>
-            <TouchableOpacity style={styles.statusDescriptor}>
+            <TouchableOpacity 
+              onPress={() =>
+                Popup.show({
+                  type: 'Success',
+                  title: 'All good',
+                  button: true,
+                  textBody: 'You’re all set for Chemical Tank!',
+                  buttonText: 'Ok',
+                  callback: () => Popup.hide()
+                })
+              }
+              style={styles.statusDescriptor}>
               {
                 !loading && (
                   <>

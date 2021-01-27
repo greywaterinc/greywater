@@ -4,7 +4,7 @@ const initialAppState = {
   viewingTank: 'chemical',
   isTankPanelOpen: false,
   initializing: true,
-  authenticated: false
+  authenticated: true
 }
 
 function appStateReducer(state, action) {
