@@ -18,6 +18,7 @@ import Registration from './src/screens/Registration';
 import DeviceTaken from './src/screens/DeviceTaken';
 import NameDevice from './src/screens/NameDevice';
 import { useAppDispatch, useAppState } from './src/contexts/app';
+import TestScreen from './src/screens/TestScreen';
 
 library.add(fas);
 
@@ -60,6 +61,7 @@ function App() {
         {
           authenticated ? (
             <>
+              <Stack.Screen name="Logging" component={TestScreen}/>
               <Stack.Screen name="Dashboard" component={DashboardScreen} />
             </>
           ): (<>
