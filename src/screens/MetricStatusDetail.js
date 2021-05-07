@@ -155,24 +155,18 @@ function MetricStatusDetail({route}) {
             viewingTank,
           })
         }>
-        <View style={tailwind('flex-row justify-between p-5')}>
+        {/* <View style={tailwind('flex-row justify-between p-5')}>
 
                 <View>
             <Text style={tailwind('font-bold text-gray-700 text-lg')}>
               Average Temperature
+            <Text/>
 
-
-            {/* <View style={{height: 90, width: 100}}>
-                <View style={tailwind('w-1/2 h-2 mt-8 bg-gray-300 rounded-full')}>
-
-                </View>
-              </View>  */}
-
-                </View>
 
           <View style={tailwind('justify-center')}>
 
                 <Text style = {tailwind('font-bold text-gray-500 font-medium')}> Week 2, January</Text>
+          </View>
           </View>
         </View>
         <HealthBar
@@ -180,7 +174,7 @@ function MetricStatusDetail({route}) {
           width={'100%'}
           enabledMargin={false}
           magicNumber={27}
-        />
+        /> */}
       </TouchableOpacity>
 
       <View
@@ -215,7 +209,7 @@ function MetricStatusDetail({route}) {
                 strokeWidth: '2',
                 stroke: '#ffa726',
               },
-
+            }}
             verticalLabelRotation={30}
           />
         </ScrollView>

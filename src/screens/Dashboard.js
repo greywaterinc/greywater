@@ -249,7 +249,7 @@ function TankView({tank}) {
   }
 }
 
-function Dashboard() {
+function Dashboard({navigation}) {
   const {viewingTank, isTankPanelOpen} = useAppState();
   const dispatch = useAppDispatch();
 
@@ -268,7 +268,7 @@ function Dashboard() {
           source={require('../assets/images/logo.png')}
           style={styles.logo}
         />
-        <DashboardHeader />
+        <DashboardHeader onCogPressed = {() => navigation.navigate('Controls')} />
         <View style={styles.card}>
           <AllTanks />
         </View>

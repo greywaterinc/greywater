@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     
 })
 
-function DashboardHeader({ isNameing=false }) {
+function DashboardHeader({ isNameing=false, onCogPressed }) {
 
     const boxes = ['Kris Greywater', 'Mashiat Greywater'];
     const [viewingBox, setBox] = useState('Mashiat Greywater');
@@ -92,7 +92,7 @@ function DashboardHeader({ isNameing=false }) {
                     style={{...tailwind('h-12 w-12 rounded-full justify-center items-center'), backgroundColor: 'rgba(255, 255, 255, 0.1)'}}>
                   <FontAwesomeIcon style={{color: 'white'}} icon={['fas', 'bell']} size={18}/>
                 </TouchableOpacity>
-                <TouchableOpacity style={{...tailwind('ml-2 h-12 w-12 rounded-full justify-center items-center'), backgroundColor: 'rgba(255, 255, 255, 0.1)'}}>
+                <TouchableOpacity  onPress={()=> onCogPressed()}style={{...tailwind('ml-2 h-12 w-12 rounded-full justify-center items-center'), backgroundColor: 'rgba(255, 255, 255, 0.1)'}}>
                   <FontAwesomeIcon style={{color: 'white'}} icon={['fas', 'cog']} size={18}/>
                 </TouchableOpacity>
                 </>

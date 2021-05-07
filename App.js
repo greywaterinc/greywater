@@ -19,6 +19,7 @@ import DeviceTaken from './src/screens/DeviceTaken';
 import NameDevice from './src/screens/NameDevice';
 import { useAppDispatch, useAppState } from './src/contexts/app';
 import TestScreen from './src/screens/TestScreen';
+import ControlScreen from './src/screens/Controls';
 
 library.add(fas);
 
@@ -61,8 +62,9 @@ function App() {
         {
           authenticated ? (
             <>
-              <Stack.Screen name="Logging" component={TestScreen}/>
+              {/* <Stack.Screen name="Logging" component={TestScreen}/> */}
               <Stack.Screen name="Dashboard" component={DashboardScreen} />
+              <Stack.Screen name="Controls" component={ControlScreen}/>
             </>
           ): (<>
             <Stack.Screen name="Onboard" component={Briefing} />
@@ -75,6 +77,7 @@ function App() {
             <Stack.Screen name="OTPVerification" component={OTPVerifcation} />
             <Stack.Screen name="DeviceFound" component={DeviceFound} />
             <Stack.Screen name="Dashboard" component={DashboardScreen} />
+          
           </>)
         }
             

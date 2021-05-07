@@ -14,11 +14,11 @@ import AppProvider from './src/contexts/app';
 import {name as appName} from './app.json';
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://api.greywater.mashiat.live/graphql',
 });
 
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000/graphql`,
+  uri: `wss://api.greywater.mashiat.live/graphql`,
   options: {
     reconnect: true,
   },
